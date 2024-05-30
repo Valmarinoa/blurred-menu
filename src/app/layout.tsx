@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Blurred Gallery",
-  description: "Personal project using React, Next & Framer Motion",
+  description: "Personal project using React and Framer Motion",
 };
 
 export default function RootLayout({

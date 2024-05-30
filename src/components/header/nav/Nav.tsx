@@ -20,7 +20,7 @@ const Nav: React.FC<NavProps> = ({ setBackgroundColor }) => {
   const links = [
     {
       title: "Vivero",
-      href: "/",
+      href: "/vivero",
       src: "image1.png",
       bg: "#80c46a",
     },

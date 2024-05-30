@@ -2,15 +2,21 @@
 
 import styles from "./header.module.scss";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { opacity, background } from "./anim";
 import Nav from "./nav/Nav";
 import Logo from "./logo/Logo";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const [bgColor, setBgColor] = useState("#e7e6f2");
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsActive(false);
+  }, [pathname]);
 
   return (
     <div className={styles.header} style={{ backgroundColor: bgColor }}>
