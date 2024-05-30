@@ -1,0 +1,12 @@
+.nav {
+  overflow: hidden;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin: 0px;
+    }
+  }
+}
