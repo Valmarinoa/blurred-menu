@@ -45,7 +45,7 @@ const Nav: React.FC<NavProps> = ({ setBackgroundColor }) => {
     },
     {
       title: "Piña Oro",
-      href: "/piñaoro",
+      href: "/pinaoro",
       src: "image5.png",
       bg: "#fecd59",
     },
