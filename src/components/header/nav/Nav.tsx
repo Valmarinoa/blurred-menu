@@ -1,23 +1,28 @@
+"use client";
 import React, { useState } from "react";
 import styles from "./nav.module.scss";
 import { motion } from "framer-motion";
 import { height } from "../anim";
 import Body from "./body/Body";
 import ImageComponent from "./image/ImageComponent";
+import Footer from "./footer/Footer";
+interface LinkItem {
+  title: string;
+  href: string;
+  src: string;
+  bg: string;
+}
 
-const Nav = () => {
+interface NavProps {
+  setBackgroundColor: (color: string) => void;
+}
+const Nav: React.FC<NavProps> = ({ setBackgroundColor }) => {
   const links = [
     {
       title: "Vivero",
       href: "/",
       src: "image1.png",
-      bg: "#",
-    },
-    {
-      title: "Campiña",
-      href: "/campina",
-      src: "image2.png",
-      bg: "#68AEF3",
+      bg: "#80c46a",
     },
     {
       title: "Monte",
@@ -25,6 +30,13 @@ const Nav = () => {
       src: "image3.png",
       bg: "#e7e6f2",
     },
+    {
+      title: "Campiña",
+      href: "/campina",
+      src: "image2.png",
+      bg: "#d14e8e",
+    },
+
     {
       title: "Agüita",
       href: "/aguita",
@@ -47,7 +59,7 @@ const Nav = () => {
       title: "Virgencita",
       href: "/virgen",
       src: "image6.png",
-      bg: "#68AEF3",
+      bg: "#aff8ff",
     },
   ];
 
@@ -55,6 +67,12 @@ const Nav = () => {
     isActive: false,
     index: 0,
   });
+
+  const handleLinkClick = (index: number) => {
+    setSelectedLink({ isActive: true, index });
+    setBackgroundColor(links[index].bg);
+  };
+
   return (
     <motion.div
       className={styles.nav}
@@ -69,7 +87,9 @@ const Nav = () => {
             links={links}
             selectedLink={selectedLink}
             setSelectedLink={setSelectedLink}
+            setBackgroundColor={setBackgroundColor}
           />
+          <Footer />
         </div>
         <ImageComponent
           src={links[selectedLink.index].src}

@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./header.module.scss";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -9,9 +10,10 @@ import Logo from "./logo/Logo";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const [bgColor, setBgColor] = useState("#e7e6f2");
 
   return (
-    <div className={styles.header}>
+    <div className={styles.header} style={{ backgroundColor: bgColor }}>
       <div className={styles.bar}>
         <Link href="/">
           <Logo />
@@ -32,7 +34,7 @@ const Header = () => {
               variants={opacity}
               animate={!isActive ? "open" : "closed"}
             >
-              Menu
+              Gallery
             </motion.p>
             <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>
               Close
@@ -44,24 +46,31 @@ const Header = () => {
           animate={!isActive ? "open" : "closed"}
           className={styles.shopContainer}
         >
-          <p className={styles.shop}>Shop</p>
           <div className={styles.el}>
             <svg
-              width="19"
-              height="20"
-              viewBox="0 0 19 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              fill="currentColor"
+              height="1.5em"
+              width="1.5em"
             >
               <path
-                d="M1.66602 1.66667H2.75449C2.9595 1.66667 3.06201 1.66667 3.1445 1.70437C3.2172 1.73759 3.2788 1.79102 3.32197 1.85829C3.37096 1.93462 3.38546 2.0361 3.41445 2.23905L3.80887 5M3.80887 5L4.68545 11.4428C4.79669 12.2604 4.85231 12.6692 5.04777 12.977C5.22 13.2481 5.46692 13.4637 5.75881 13.5978C6.09007 13.75 6.50264 13.75 7.32777 13.75H14.4593C15.2448 13.75 15.6375 13.75 15.9585 13.6087C16.2415 13.4841 16.4842 13.2832 16.6596 13.0285C16.8585 12.7397 16.9319 12.3539 17.0789 11.5823L18.1819 5.79141C18.2337 5.51984 18.2595 5.38405 18.222 5.27792C18.1892 5.18481 18.1243 5.1064 18.039 5.05668C17.9417 5 17.8035 5 17.527 5H3.80887ZM8.33268 17.5C8.33268 17.9602 7.95959 18.3333 7.49935 18.3333C7.03911 18.3333 6.66602 17.9602 6.66602 17.5C6.66602 17.0398 7.03911 16.6667 7.49935 16.6667C7.95959 16.6667 8.33268 17.0398 8.33268 17.5ZM14.9993 17.5C14.9993 17.9602 14.6263 18.3333 14.166 18.3333C13.7058 18.3333 13.3327 17.9602 13.3327 17.5C13.3327 17.0398 13.7058 16.6667 14.166 16.6667C14.6263 16.6667 14.9993 17.0398 14.9993 17.5Z"
-                stroke="#4D3D30"
-                strokeWidth="1.5"
+                fill="none"
+                stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              ></path>
+                strokeWidth={32}
+                d="M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z"
+              />
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={32}
+                d="M304 192 A48 48 0 0 1 256 240 A48 48 0 0 1 208 192 A48 48 0 0 1 304 192 z"
+              />
             </svg>
-            <p>Cart(0)</p>
+            <p>Valle del cauca, co</p>
           </div>
         </motion.div>
       </div>
@@ -71,8 +80,11 @@ const Header = () => {
         animate={isActive ? "open" : "closed"}
         className={styles.background}
       ></motion.div>
-      <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isActive && <Nav setBackgroundColor={setBgColor} />}
+      </AnimatePresence>
     </div>
   );
 };
+
 export default Header;
